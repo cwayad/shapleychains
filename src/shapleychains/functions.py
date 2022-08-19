@@ -57,7 +57,7 @@ def print_feat_contribs(var_x, var_y, direct, indirect):
     print("Direct and indirect shapley contributions")
     shap_chain.sort_values(by='total')[list(shap_chain)[:-1]].plot.barh(figsize=(8, 8), stacked=True)
     plt.legend(loc=4)
-    plt.show()
+    #plt.show()
 
     # sum shapley contributions for each model, in order to normalize
     sum_shap = [shap_chain['direct_' + str(var_y[0])].sum()]
@@ -81,9 +81,10 @@ def print_feat_contribs(var_x, var_y, direct, indirect):
     shap_chain_normalized.sort_values(by='total')[list(shap_chain_normalized)[:-1]].plot.barh(figsize=(8, 8),
                                                                                               stacked=True)
     plt.legend(loc=4)
-    plt.savefig('norm.png', bbox_inches="tight", dpi=1000)
     plt.xlabel("(f) Shapley chains with order = " + str(var_y))
-    plt.show()
+    plt.savefig('normalized.png', bbox_inches="tight", dpi=1000)
+
+    #plt.show()
 
     shap_chain_normalized = shap_chain_normalized.sort_values(by='total')
     return shap_chain, shap_chain_normalized

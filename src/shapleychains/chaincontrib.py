@@ -20,7 +20,7 @@ class ChainContrib:
     def get_direct_contrib(self):
         # direct_values = OrderedDict([])
         direct_values = {}
-        data_x = self.data[self.var_X].copy(deep=True)
+        data_x = self.data[self.var_X].copy(deep=True)  # test dataset
         Y = self.estimators[0].predict_proba(data_x)[:, 1]  # we use probability predictions (instead of prediction)
         # explain all the predictions in the test set
         if self.explainer_type == 'Kernel':

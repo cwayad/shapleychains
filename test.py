@@ -12,13 +12,15 @@ var_x = ['X1', 'X2']
 
 var_y = ['AND', 'OR', 'XOR']
 
-train_xor = df.iloc[:16,:]
-test_xor = df.iloc[16:,:]
+train_xor = df.iloc[:16, :]
+test_xor = df.iloc[16:, :]
 
 chain_xor_LR = ClassifierChain(LogisticRegression())
 chain_xor_LR.fit(train_xor[var_x], train_xor[var_y])
 
 cc_LR = ChainContrib(df, var_x, var_y, chain_xor_LR.estimators_, explainer='Kernel')
+
+#predictions_proba = chain_xor_LR.predict_proba(test_xor[var_x])
 
 
 dc = cc_LR.get_direct_contrib()
