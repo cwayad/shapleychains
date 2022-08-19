@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setup(
     name='shapleychains',
-    version='0.1.0',
+    version='0.1.1',
     description='',
     url= 'https://github.com/cwayad/shapleychains.git',
     long_description=long_description,
