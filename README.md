@@ -1,6 +1,6 @@
 # shapleychains lib
 
-descrpetion
+Official code for the paper Shapley chains: Extending Shapley values to Classifier chains
 
 ## Installation
 
