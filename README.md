@@ -15,12 +15,11 @@ pip install shapleychains
 
 ```python
 from shapleychains import ChainContrib
-from shapleychains import get_di_posneg, get_in_posneg, get_di_pos, print_feat_contribs, xor
+from shapleychains import get_direct_positive, get_direct_unsigned, draw_features_contribs, get_indirect_unsigned, xor
 
 from sklearn.multioutput import ClassifierChain
 from sklearn.linear_model import LogisticRegression
 
-import pandas as pd
 
 df = xor()
 
@@ -39,10 +38,10 @@ cc_LR = ChainContrib(df, var_x, var_y, chain_xor_LR.estimators_, explainer='Kern
 
 dc = cc_LR.get_direct_contrib()
 ic = cc_LR.get_indirect_contrib(dc)
-di_pos = get_di_pos(dc, len(var_x))
-di_posneg = get_di_posneg(dc, len(var_x))
-ic_posneg = get_in_posneg(ic)
+di_pos = get_direct_positive(dc, len(var_x))
+di_posneg = get_direct_unsigned(dc, len(var_x))
+ic_posneg = get_indirect_unsigned(ic)
 
-raw, normalized = print_feat_contribs(var_x, var_y, dc, ic)
+raw, normalized = draw_features_contribs(var_x, var_y, dc, ic)
 
 ```

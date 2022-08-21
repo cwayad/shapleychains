@@ -1,2 +1,2 @@
 from .chaincontrib import ChainContrib
-from .functions import get_di_posneg, get_in_posneg, get_di_pos, print_feat_contribs, xor
+from .functions import get_direct_positive, get_direct_unsigned, get_indirect_unsigned, draw_features_contribs, xor

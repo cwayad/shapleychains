@@ -5,16 +5,24 @@ import pandas as pd
 
 
 def xor() -> pd.DataFrame:
-    return pd.read_csv('xor.csv')
 
-def get_di_pos(direct, n):
+    xor = {'X1': {0: 0, 1: 1, 2: 1, 3: 0, 4: 0, 5: 0, 6: 1, 7: 1, 8: 0, 9: 1, 10: 1, 11: 0, 12: 0, 13: 1, 14: 1, 15: 0, 16: 0, 17: 1, 18: 1, 19: 0}, 
+    'X2': {0: 1, 1: 0, 2: 1, 3: 0, 4: 1, 5: 1, 6: 0, 7: 1, 8: 0, 9: 0, 10: 1, 11: 0, 12: 1, 13: 0, 14: 1, 15: 0, 16: 1, 17: 0, 18: 1, 19: 0}, 
+    'X3': {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 1, 9: 1, 10: 1, 11: 1, 12: 1, 13: 1, 14: 1, 15: 1, 16: 1, 17: 1, 18: 1, 19: 1}, 
+    'OR': {0: 1, 1: 1, 2: 1, 3: 0, 4: 1, 5: 1, 6: 1, 7: 1, 8: 0, 9: 1, 10: 1, 11: 0, 12: 1, 13: 1, 14: 1, 15: 0, 16: 1, 17: 1, 18: 1, 19: 0}, 
+    'AND': {0: 0, 1: 0, 2: 1, 3: 0, 4: 0, 5: 0, 6: 0, 7: 1, 8: 0, 9: 0, 10: 1, 11: 0, 12: 0, 13: 0, 14: 1, 15: 0, 16: 0, 17: 0, 18: 1, 19: 0}, 
+    'XOR': {0: 1, 1: 1, 2: 0, 3: 0, 4: 1, 5: 1, 6: 1, 7: 0, 8: 0, 9: 1, 10: 0, 11: 0, 12: 1, 13: 1, 14: 0, 15: 0, 16: 1, 17: 1, 18: 0, 19: 0}}
+    
+    return pd.DataFrame(xor)
+
+def get_direct_positive(direct, n):
     n_direct = {}
     for key in direct:
         n_direct[key] = direct[key][1][:, :n]
     return n_direct
 
 
-def get_di_posneg(direct, n):
+def get_direct_unsigned(direct, n):
     n_direct = {}
     for key in direct:
         n_direct[key] = []
@@ -23,7 +31,7 @@ def get_di_posneg(direct, n):
     return n_direct
 
 
-def get_in_posneg(indirect):
+def get_indirect_unsigned(indirect):
     signed_indirect = {}
     for key in indirect:
         signed_indirect[key] = [-indirect[key], indirect[key]]
@@ -31,7 +39,7 @@ def get_in_posneg(indirect):
     return signed_indirect
 
 
-def print_feat_contribs(var_x, var_y, direct, indirect):
+def draw_features_contribs(var_x, var_y, direct, indirect):
     """
     Parameters:
     Similar parameters to Shap chains class (var_X, var_Y).
